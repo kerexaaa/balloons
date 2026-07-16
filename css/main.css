@@ -436,6 +436,8 @@ h1 {
 .adventure-card {
   padding: 2.5rem;
   background-color: rgba(250, 250, 250, 0.8);
+  height: 100%;
+  width: 100%;
   border-radius: 0.5rem;
   box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -641,11 +643,14 @@ h1 {
   margin-inline: auto;
   padding: 6rem;
   transform: skewX(-30deg);
+  display: flex;
+  align-items: center;
 }
 @media only screen and (max-width: 900px) {
   .feedBack-card {
     transform: skewX(-10deg);
     padding: 3rem;
+    flex-direction: column;
   }
 }
 .feedBack-card > * {
@@ -661,25 +666,27 @@ h1 {
   width: 15rem;
   height: 15rem;
   background: green;
-  float: left;
   border-radius: 100rem;
-  shape-outside: circle(50% at 50% 50%);
-  -webkit-shape-outside: circle(50% at 50% 50%);
   margin-right: 4rem;
   overflow: hidden;
   position: relative;
+  flex-shrink: 0;
 }
 @media only screen and (max-width: 900px) {
   .feedBack-card__img {
-    float: none;
-    margin: 0 auto;
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem auto;
   }
 }
 .feedBack-card__img img {
+  width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   transform: scale(1.2);
   transition: all 0.2s ease;
+}
+.feedBack-card__box {
+  flex: 1;
 }
 .feedBack-card__name {
   transition: all 0.2s ease;
@@ -1192,6 +1199,18 @@ h1 {
     padding: 10rem 0;
     clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%);
   }
+}
+.section-adventure .row {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.section-adventure .row::after {
+  display: none;
+}
+.section-adventure [class^=col-] {
+  float: none;
+  display: flex;
 }
 
 .section-tours {
